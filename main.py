@@ -1,17 +1,9 @@
+from stats import word_count, count_letters, character_count
+
 def get_book_text(filepath):
     with open(filepath, encoding='utf-8') as f:
         text = f.read()
     return text
-
-def word_count(book_text):
-    return len(book_text.split())
-
-def count_letters(book_text):
-    letter_count = 0
-    for char in book_text:
-        if char.isalpha():
-            letter_count += 1
-    return letter_count
 
 def main():
     path = "books/frankenstein.txt"
@@ -23,7 +15,12 @@ def main():
     num_letters = count_letters(book_text)
     print(f"{num_letters} letters found in the document")
 
+    char_freq = character_count(book_text)
+    for char in sorted(char_freq.keys()):
+        print(f"'{char}': {char_freq[char]}")
+
 if __name__ == "__main__":
     main()
+
 
     
