@@ -1,3 +1,8 @@
+def get_book_text(filepath):
+    with open(filepath, encoding='utf-8') as f:
+        text = f.read()
+    return text
+
 def word_count(book_text):
     return len(book_text.split())
 
@@ -12,6 +17,8 @@ def character_count(book_text):
     character_count = {}
     book_text = book_text.lower()
     for char in book_text:
+        if not char.isalpha():
+            continue
         if char in character_count:
             character_count[char] += 1
         else:
